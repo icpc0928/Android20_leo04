@@ -70,7 +70,12 @@ public class MainActivity extends AppCompatActivity {
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
             CharSequence data = msg.getData().getCharSequence("data","no data");
-            tv.setText(data);
+            if (msg.what == 1 ){
+                tv2.setText(data);
+            }else{
+                tv.setText(data);
+            }
+
         }
     }
 
@@ -82,6 +87,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void run() {
             Log.v("leo","i = " + i++);
+            Message message = new Message();
+            message.what=1;
+            Bundle data = new Bundle();
+            data.putCharSequence("data", "MyTask : i = " +i);
+            message.setData(data);
+            uiHandler.sendMessage(message);
 
         }
     }
