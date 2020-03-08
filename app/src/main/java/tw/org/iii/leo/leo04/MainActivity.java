@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    //timer
     private Timer timer = new Timer();
     private class MyTask extends TimerTask{
         int i ;
